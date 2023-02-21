@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
+mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DATABASE_URL);
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
