@@ -21,12 +21,6 @@ const whitelist = ['http://localhost:3000', 'https://client-blog-eight.vercel.ap
 
 app.use(cors({credentials: true, origin: whitelist}));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Credentials', true);
-    next()
- });
-
  app.use(function (req, res, next) {
     var origin = req.headers.origin;
     if(whitelist.indexOf(origin) > -1){
