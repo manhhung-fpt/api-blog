@@ -20,6 +20,27 @@ const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 const whitelist = ['http://localhost:3000', 'https://client-blog-eight.vercel.app' ]
 
 app.use(cors({credentials: true, origin: whitelist}));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', true);
+    next()
+ });
+
+ app.use(function (req, res, next) {
+    var origin = req.headers.origin;
+    if(whitelist.indexOf(origin) > -1){
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+  
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Accept');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+  
+    next();
+  })
+
+
 app.use(express.json());
 app.use(cookieParser());
 
