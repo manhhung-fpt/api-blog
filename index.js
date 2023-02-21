@@ -17,9 +17,12 @@ dotenv.config();
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 
-app.use(cors({ credentials: true }));
+const whitelist = ['http://localhost:3000', 'https://client-blog-eight.vercel.app' ]
+
+app.use(cors({credentials: true, origin: whitelist}));
 app.use(express.json());
 app.use(cookieParser());
+
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 mongoose.set("strictQuery", false);
@@ -139,7 +142,7 @@ app.get('/post/:id', async (req, res) => {
 
 app.get('/alo', (req, res) => {
     res.send('Hello World!')
-  })
+})
 
 app.listen(process.env.PORT || 3000);
 // mongodb+srv://blog:<Hakhanh123>@cluster0.ojrpjj2.mongodb.net/?retryWrites=true&w=majority
