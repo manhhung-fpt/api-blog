@@ -41,6 +41,13 @@ app.post('/register', async (req, res) => {
     }
 });
 
+app.use((req, res, next) => {
+    res.header(`Access-Control-Allow-Origin`, `*example.com`);
+    res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+    res.header(`Access-Control-Allow-Headers`, `Content-Type`);
+    next();
+  });
+
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const userDoc = await User.findOne({ username });
