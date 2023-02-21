@@ -136,6 +136,9 @@ app.get('/post/:id', async (req, res) => {
     res.json(postDoc);
 })
 
+app.get('/alo', (req, res) => {
+    res.send('Hello World!')
+  })
 
 app.listen(4000);
 // mongodb+srv://blog:<Hakhanh123>@cluster0.ojrpjj2.mongodb.net/?retryWrites=true&w=majority
