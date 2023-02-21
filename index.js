@@ -140,5 +140,5 @@ app.get('/alo', (req, res) => {
     res.send('Hello World!')
   })
 
-app.listen(4000);
+app.listen(process.env.PORT);
 // mongodb+srv://blog:<Hakhanh123>@cluster0.ojrpjj2.mongodb.net/?retryWrites=true&w=majority
